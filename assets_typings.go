@@ -27,13 +27,13 @@ type AssetsIDStatsProps struct {
 
 // GetAssetIDLogs response
 type AssetsIDLogsProps struct {
-	Success   bool                  `json:"success"`
-	Data      []AssetsLogsDataProps `json:"data,omitempty"` // if error from api, this is omitted
-	QueryTime int64                 `json:"query_time"`
-	Message   string                `json:"message,omitempty"` // error message will be here
+	Success   bool           `json:"success"`
+	Data      []LogDataProps `json:"data,omitempty"` // if error from api, this is omitted
+	QueryTime int64          `json:"query_time"`
+	Message   string         `json:"message,omitempty"` // error message will be here
 }
 
-type AssetsLogsDataProps struct {
+type LogDataProps struct {
 	LogID          string `json:"log_id"`
 	Name           string `json:"name"`
 	Data           Data   `json:"data"`
