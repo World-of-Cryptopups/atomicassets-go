@@ -14,5 +14,9 @@ jobs:
           go-version: ${{ matrix.go-version }}
       - name: Fetch Repository
         uses: actions/checkout@v2
-      - name: Run Assets Sample CODE
-        run: go run _example/assets/main.go
+      - name: Run Sample CODES
+        run: |
+          go run _example/assets/main.go
+          go run _example/collections/main.go
+          go run _example/schemas/main.go
+          go run _example/templates/main.go
