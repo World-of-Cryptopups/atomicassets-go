@@ -2,6 +2,10 @@
 
 A simple API Wrapper for the AtomicHub API
 
+### Note
+
+All functions are not tested or guaranteed to work correctly yet.
+
 ## Install
 
 ```
@@ -37,6 +41,8 @@ func main () {
 ```
 
 ## Currently Implemented Endpoints
+
+Only `/atomicassets/` endpoints are implemented since the name implies.
 
 - Assets
 - Collections
