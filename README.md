@@ -43,5 +43,6 @@ func main () {
 - Schemas
 - Templates
 - Offers
+- Transfers
 
 #### &copy; 2021 | World of Cryptopups
