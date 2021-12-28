@@ -7,6 +7,8 @@ import (
 	"github.com/google/go-querystring/query"
 )
 
+const TRANSFERS_API = "transfers"
+
 type GetTransfersQuery struct {
 	Account             string   `url:"account,omitempty"`
 	Sender              string   `url:"sender,omitempty"`
@@ -34,9 +36,9 @@ func (a *AtomicAssets) GetTransfers(options *GetTransfersQuery) (*TransfersProps
 	var u string
 	if options != nil {
 		v, _ := query.Values(options)
-		u, _ = urljoin.UrlJoin(a.API_URL, OFFERS_API, fmt.Sprintf("?%s", v.Encode()))
+		u, _ = urljoin.UrlJoin(a.API_URL, TRANSFERS_API, fmt.Sprintf("?%s", v.Encode()))
 	} else {
-		u, _ = urljoin.UrlJoin(a.API_URL, OFFERS_API)
+		u, _ = urljoin.UrlJoin(a.API_URL, TRANSFERS_API)
 	}
 
 	var result = &TransfersProps{}
