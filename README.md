@@ -45,5 +45,6 @@ func main () {
 - Offers
 - Transfers
 - Accounts
+- Burns
 
 #### &copy; 2021 | World of Cryptopups
