@@ -33,9 +33,9 @@ func (a *AtomicAssets) GetSchemas(options *GetSchemasQuery) (*SchemaProps, error
 
 	if options != nil {
 		v, _ := query.Values(options)
-		u, _ = urljoin.UrlJoin(a.API_URL, SCHEMAS_API, fmt.Sprintf("?%s", v.Encode()))
+		u, _ = urljoin.UrlJoin(a.apiUrl, SCHEMAS_API, fmt.Sprintf("?%s", v.Encode()))
 	} else {
-		u, _ = urljoin.UrlJoin(a.API_URL, SCHEMAS_API)
+		u, _ = urljoin.UrlJoin(a.apiUrl, SCHEMAS_API)
 	}
 
 	var result = &SchemaProps{}
@@ -48,7 +48,7 @@ func (a *AtomicAssets) GetSchemas(options *GetSchemasQuery) (*SchemaProps, error
 
 // GetCollectionName gets the collection with its name.
 func (a *AtomicAssets) GetSchemaName(collectionName, schemaName string) (*SchemaNameProps, error) {
-	u, _ := urljoin.UrlJoin(a.API_URL, SCHEMAS_API, collectionName, schemaName)
+	u, _ := urljoin.UrlJoin(a.apiUrl, SCHEMAS_API, collectionName, schemaName)
 
 	var result = &SchemaNameProps{}
 	if err := a._requester(u, result); err != nil {
@@ -60,7 +60,7 @@ func (a *AtomicAssets) GetSchemaName(collectionName, schemaName string) (*Schema
 
 // GetCollectionNameStats gets the collection's stats.
 func (a *AtomicAssets) GetSchemaNameStats(collectionName, schemaName string) (*SchemaNameStatsProps, error) {
-	u, _ := urljoin.UrlJoin(a.API_URL, SCHEMAS_API, collectionName, schemaName, "stats")
+	u, _ := urljoin.UrlJoin(a.apiUrl, SCHEMAS_API, collectionName, schemaName, "stats")
 
 	var result = &SchemaNameStatsProps{}
 	if err := a._requester(u, result); err != nil {
@@ -101,7 +101,7 @@ func (a *AtomicAssets) GetSchemaNameLogs(collectionName, schemaName string, opti
 	}
 
 	v, _ := query.Values(opts)
-	u, _ := urljoin.UrlJoin(a.API_URL, SCHEMAS_API, collectionName, schemaName, "logs", fmt.Sprintf("?%s", v.Encode()))
+	u, _ := urljoin.UrlJoin(a.apiUrl, SCHEMAS_API, collectionName, schemaName, "logs", fmt.Sprintf("?%s", v.Encode()))
 
 	var result = &SchemaNameLogsProps{}
 	if err := a._requester(u, result); err != nil {

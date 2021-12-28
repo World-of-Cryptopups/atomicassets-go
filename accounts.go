@@ -30,9 +30,9 @@ func (a *AtomicAssets) GetAccounts(options *GetAccountsQuery) (*AccountsProps, e
 	var u string
 	if options != nil {
 		v, _ := query.Values(options)
-		u, _ = urljoin.UrlJoin(a.API_URL, ACCOUNTS_API, fmt.Sprintf("?%s", v.Encode()))
+		u, _ = urljoin.UrlJoin(a.apiUrl, ACCOUNTS_API, fmt.Sprintf("?%s", v.Encode()))
 	} else {
-		u, _ = urljoin.UrlJoin(a.API_URL, ACCOUNTS_API)
+		u, _ = urljoin.UrlJoin(a.apiUrl, ACCOUNTS_API)
 	}
 
 	var result = &AccountsProps{}
@@ -54,9 +54,9 @@ func (a *AtomicAssets) GetAccount(account string, options *GetAccountQuery) (*Ac
 	var u string
 	if options != nil {
 		v, _ := query.Values(options)
-		u, _ = urljoin.UrlJoin(a.API_URL, ACCOUNTS_API, account, fmt.Sprintf("?%s", v.Encode()))
+		u, _ = urljoin.UrlJoin(a.apiUrl, ACCOUNTS_API, account, fmt.Sprintf("?%s", v.Encode()))
 	} else {
-		u, _ = urljoin.UrlJoin(a.API_URL, ACCOUNTS_API, account)
+		u, _ = urljoin.UrlJoin(a.apiUrl, ACCOUNTS_API, account)
 	}
 
 	var result = &AccountProps{}
@@ -69,7 +69,7 @@ func (a *AtomicAssets) GetAccount(account string, options *GetAccountQuery) (*Ac
 
 // GetAccountCollection gets the templates and schemas count by account.
 func (a *AtomicAssets) GetAccountCollection(account, collection string) (*AccountCollectionProps, error) {
-	u, _ := urljoin.UrlJoin(a.API_URL, ACCOUNTS_API, account, collection)
+	u, _ := urljoin.UrlJoin(a.apiUrl, ACCOUNTS_API, account, collection)
 
 	var result = &AccountCollectionProps{}
 	if err := a._requester(u, result); err != nil {

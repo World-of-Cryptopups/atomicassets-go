@@ -6,8 +6,8 @@ import (
 )
 
 type AtomicAssets struct {
-	API_URL string
-	client  *http.Client
+	apiUrl string
+	client *http.Client
 }
 
 func (a *AtomicAssets) _requester(u string, v interface{}) error {
@@ -23,4 +23,12 @@ func (a *AtomicAssets) _requester(u string, v interface{}) error {
 	}
 
 	return nil
+}
+
+// Create a new AtomicAssets instance.
+func New() *AtomicAssets {
+	return &AtomicAssets{
+		apiUrl: "https://wax.api.atomicassets.io/atomicassets/v1",
+		client: &http.Client{},
+	}
 }

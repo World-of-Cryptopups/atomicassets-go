@@ -36,9 +36,9 @@ func (a *AtomicAssets) GetTransfers(options *GetTransfersQuery) (*TransfersProps
 	var u string
 	if options != nil {
 		v, _ := query.Values(options)
-		u, _ = urljoin.UrlJoin(a.API_URL, TRANSFERS_API, fmt.Sprintf("?%s", v.Encode()))
+		u, _ = urljoin.UrlJoin(a.apiUrl, TRANSFERS_API, fmt.Sprintf("?%s", v.Encode()))
 	} else {
-		u, _ = urljoin.UrlJoin(a.API_URL, TRANSFERS_API)
+		u, _ = urljoin.UrlJoin(a.apiUrl, TRANSFERS_API)
 	}
 
 	var result = &TransfersProps{}
