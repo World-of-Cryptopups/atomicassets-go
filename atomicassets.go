@@ -2,6 +2,7 @@ package atomicassets
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 )
 
@@ -31,4 +32,20 @@ func New() *AtomicAssets {
 		apiUrl: "https://wax.api.atomicassets.io/atomicassets/v1",
 		client: &http.Client{},
 	}
+}
+
+// Create a new AtomicAssets instance with custom api endpoint and http client.
+func NewCustom(endpoint string, client *http.Client) (*AtomicAssets, error) {
+	if endpoint == "" {
+		return nil, errors.New("endpoint provided is blank")
+	}
+
+	if client == nil {
+		return nil, errors.New("custom http.Client is nil")
+	}
+
+	return &AtomicAssets{
+		apiUrl: endpoint,
+		client: client,
+	}, nil
 }
