@@ -42,5 +42,6 @@ func main () {
 - Collections
 - Schemas
 - Templates
+- Offers
 
 #### &copy; 2021 | World of Cryptopups
