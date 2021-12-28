@@ -44,5 +44,6 @@ func main () {
 - Templates
 - Offers
 - Transfers
+- Accounts
 
 #### &copy; 2021 | World of Cryptopups
