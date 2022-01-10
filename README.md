@@ -25,7 +25,7 @@ import (
 )
 
 func main () {
-    a := atomicassets.New()
+	a := atomicassets.New()
 
 	q, err := a.GetAssets(&atomicassets.GetAssetsQuery{
 		CollectionName: "cryptopuppie",
@@ -37,6 +37,23 @@ func main () {
 
 	fmt.Println(q.Data[0].AssetID)
 	fmt.Println(q.Data[0].Name)
+}
+```
+
+- You can also create a new instance with your a custom endpoint and http client.
+
+```go
+package main
+
+import (
+    "fmt"
+    "log"
+
+	"github.com/World-of-Cryptopups/atomicassets-go"
+)
+
+func main () {
+	a := atomicassets.NewCustom("your-custom-endpoint", &http.Client{})
 }
 ```
 
