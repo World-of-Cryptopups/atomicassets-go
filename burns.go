@@ -28,9 +28,9 @@ func (a *AtomicAssets) GetBurns(options *GetBurnsQuery) (*BurnsProps, error) {
 	var u string
 	if options != nil {
 		v, _ := query.Values(options)
-		u, _ = urljoin.UrlJoin(a.apiUrl, BURNS_API, fmt.Sprintf("?%s", v.Encode()))
+		u = urljoin.UrlJoin(a.apiUrl, BURNS_API, fmt.Sprintf("?%s", v.Encode()))
 	} else {
-		u, _ = urljoin.UrlJoin(a.apiUrl, BURNS_API)
+		u = urljoin.UrlJoin(a.apiUrl, BURNS_API)
 	}
 
 	var result = &BurnsProps{}
@@ -46,9 +46,9 @@ func (a *AtomicAssets) GetBurnsAccount(account string, options *GetBurnsQuery) (
 	var u string
 	if options != nil {
 		v, _ := query.Values(options)
-		u, _ = urljoin.UrlJoin(a.apiUrl, BURNS_API, account, fmt.Sprintf("?%s", v.Encode()))
+		u = urljoin.UrlJoin(a.apiUrl, BURNS_API, account, fmt.Sprintf("?%s", v.Encode()))
 	} else {
-		u, _ = urljoin.UrlJoin(a.apiUrl, BURNS_API, account)
+		u = urljoin.UrlJoin(a.apiUrl, BURNS_API, account)
 	}
 
 	var result = &BurnsAccountProps{}

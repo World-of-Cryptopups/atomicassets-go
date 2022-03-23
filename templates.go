@@ -41,9 +41,9 @@ func (a *AtomicAssets) GetTemplates(options *GetTemplatesQuery) (*TemplatesProps
 
 	if options != nil {
 		v, _ := query.Values(options)
-		u, _ = urljoin.UrlJoin(a.apiUrl, TEMPLATES_API, fmt.Sprintf("?%s", v.Encode()))
+		u = urljoin.UrlJoin(a.apiUrl, TEMPLATES_API, fmt.Sprintf("?%s", v.Encode()))
 	} else {
-		u, _ = urljoin.UrlJoin(a.apiUrl, TEMPLATES_API)
+		u = urljoin.UrlJoin(a.apiUrl, TEMPLATES_API)
 	}
 
 	fmt.Println(u)
@@ -58,7 +58,7 @@ func (a *AtomicAssets) GetTemplates(options *GetTemplatesQuery) (*TemplatesProps
 
 // GetTemplateID gets the template by its id.
 func (a *AtomicAssets) GetTemplateID(collectionName string, templateID int) (*TemplateIDProps, error) {
-	u, _ := urljoin.UrlJoin(a.apiUrl, TEMPLATES_API, collectionName, strconv.Itoa(templateID))
+	u := urljoin.UrlJoin(a.apiUrl, TEMPLATES_API, collectionName, strconv.Itoa(templateID))
 
 	var result = &TemplateIDProps{}
 	if err := a._requester(u, result); err != nil {
@@ -70,7 +70,7 @@ func (a *AtomicAssets) GetTemplateID(collectionName string, templateID int) (*Te
 
 // GetTemplateIDStats gets the collection's stats.
 func (a *AtomicAssets) GetTemplateIDStats(collectionName string, templateID int) (*TemplateIDStatsProps, error) {
-	u, _ := urljoin.UrlJoin(a.apiUrl, TEMPLATES_API, collectionName, strconv.Itoa(templateID), "stats")
+	u := urljoin.UrlJoin(a.apiUrl, TEMPLATES_API, collectionName, strconv.Itoa(templateID), "stats")
 
 	var result = &TemplateIDStatsProps{}
 	if err := a._requester(u, result); err != nil {
@@ -111,7 +111,7 @@ func (a *AtomicAssets) GetTemplateIDLogs(collectionName string, templateID int, 
 	}
 
 	v, _ := query.Values(opts)
-	u, _ := urljoin.UrlJoin(a.apiUrl, SCHEMAS_API, collectionName, strconv.Itoa(templateID), "logs", fmt.Sprintf("?%s", v.Encode()))
+	u := urljoin.UrlJoin(a.apiUrl, SCHEMAS_API, collectionName, strconv.Itoa(templateID), "logs", fmt.Sprintf("?%s", v.Encode()))
 
 	var result = &TemplateIDLogsProps{}
 	if err := a._requester(u, result); err != nil {

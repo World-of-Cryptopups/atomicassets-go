@@ -43,9 +43,9 @@ func (a *AtomicAssets) GetOffers(options *GetOffersQuery) (*OffersProps, error) 
 	var u string
 	if options != nil {
 		v, _ := query.Values(options)
-		u, _ = urljoin.UrlJoin(a.apiUrl, OFFERS_API, fmt.Sprintf("?%s", v.Encode()))
+		u = urljoin.UrlJoin(a.apiUrl, OFFERS_API, fmt.Sprintf("?%s", v.Encode()))
 	} else {
-		u, _ = urljoin.UrlJoin(a.apiUrl, OFFERS_API)
+		u = urljoin.UrlJoin(a.apiUrl, OFFERS_API)
 	}
 
 	var result = &OffersProps{}
@@ -58,7 +58,7 @@ func (a *AtomicAssets) GetOffers(options *GetOffersQuery) (*OffersProps, error) 
 
 // GetOfferID gets the offer by its id.
 func (a *AtomicAssets) GetOfferID(offerID int) (*OffersData, error) {
-	u, _ := urljoin.UrlJoin(a.apiUrl, OFFERS_API, strconv.Itoa(offerID))
+	u := urljoin.UrlJoin(a.apiUrl, OFFERS_API, strconv.Itoa(offerID))
 
 	var result = &OffersData{}
 	if err := a._requester(u, result); err != nil {
@@ -99,7 +99,7 @@ func (a *AtomicAssets) GetOfferIDLogs(offerID int, options *GetOfferIDLogsQuery)
 	}
 
 	v, _ := query.Values(opts)
-	u, _ := urljoin.UrlJoin(a.apiUrl, OFFERS_API, strconv.Itoa(offerID), "logs", fmt.Sprintf("?%s", v.Encode()))
+	u := urljoin.UrlJoin(a.apiUrl, OFFERS_API, strconv.Itoa(offerID), "logs", fmt.Sprintf("?%s", v.Encode()))
 
 	var result = &OfferIDLogsProps{}
 	if err := a._requester(u, result); err != nil {

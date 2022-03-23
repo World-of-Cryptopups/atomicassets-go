@@ -33,9 +33,9 @@ func (a *AtomicAssets) GetCollections(options *GetCollectionsQuery) (*Collection
 
 	if options != nil {
 		v, _ := query.Values(options)
-		u, _ = urljoin.UrlJoin(a.apiUrl, COLLECTIONS_API, fmt.Sprintf("?%s", v.Encode()))
+		u = urljoin.UrlJoin(a.apiUrl, COLLECTIONS_API, fmt.Sprintf("?%s", v.Encode()))
 	} else {
-		u, _ = urljoin.UrlJoin(a.apiUrl, COLLECTIONS_API)
+		u = urljoin.UrlJoin(a.apiUrl, COLLECTIONS_API)
 	}
 
 	var result = &CollectionsProps{}
@@ -48,7 +48,7 @@ func (a *AtomicAssets) GetCollections(options *GetCollectionsQuery) (*Collection
 
 // GetCollectionName gets the collection with its name.
 func (a *AtomicAssets) GetCollectionName(name string) (*CollectionNameProps, error) {
-	u, _ := urljoin.UrlJoin(a.apiUrl, COLLECTIONS_API, name)
+	u := urljoin.UrlJoin(a.apiUrl, COLLECTIONS_API, name)
 
 	var result = &CollectionNameProps{}
 	if err := a._requester(u, result); err != nil {
@@ -60,7 +60,7 @@ func (a *AtomicAssets) GetCollectionName(name string) (*CollectionNameProps, err
 
 // GetCollectionNameStats gets the collection's stats.
 func (a *AtomicAssets) GetCollectionNameStats(name string) (*CollectionNameStatsProps, error) {
-	u, _ := urljoin.UrlJoin(a.apiUrl, COLLECTIONS_API, name, "stats")
+	u := urljoin.UrlJoin(a.apiUrl, COLLECTIONS_API, name, "stats")
 
 	var result = &CollectionNameStatsProps{}
 	if err := a._requester(u, result); err != nil {
@@ -101,7 +101,7 @@ func (a *AtomicAssets) GetCollectionNameLogs(name string, options *GetCollection
 	}
 
 	v, _ := query.Values(opts)
-	u, _ := urljoin.UrlJoin(a.apiUrl, COLLECTIONS_API, name, "logs", fmt.Sprintf("?%s", v.Encode()))
+	u := urljoin.UrlJoin(a.apiUrl, COLLECTIONS_API, name, "logs", fmt.Sprintf("?%s", v.Encode()))
 
 	var result = &CollectionNameLogsProps{}
 	if err := a._requester(u, result); err != nil {

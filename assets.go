@@ -44,9 +44,9 @@ func (a *AtomicAssets) GetAssets(options *GetAssetsQuery) (*AssetsProps, error) 
 
 	if options != nil {
 		v, _ := query.Values(options)
-		u, _ = urljoin.UrlJoin(a.apiUrl, ASSETS_API, fmt.Sprintf("?%s", v.Encode()))
+		u = urljoin.UrlJoin(a.apiUrl, ASSETS_API, fmt.Sprintf("?%s", v.Encode()))
 	} else {
-		u, _ = urljoin.UrlJoin(a.apiUrl, ASSETS_API)
+		u = urljoin.UrlJoin(a.apiUrl, ASSETS_API)
 	}
 
 	var result = &AssetsProps{}
@@ -59,7 +59,7 @@ func (a *AtomicAssets) GetAssets(options *GetAssetsQuery) (*AssetsProps, error) 
 
 // GetAssetID fetches an assets by its id.
 func (a *AtomicAssets) GetAssetID(id string) (*AssetsIDProps, error) {
-	u, _ := urljoin.UrlJoin(a.apiUrl, ASSETS_API, id)
+	u := urljoin.UrlJoin(a.apiUrl, ASSETS_API, id)
 
 	var result = &AssetsIDProps{}
 	if err := a._requester(u, result); err != nil {
@@ -71,7 +71,7 @@ func (a *AtomicAssets) GetAssetID(id string) (*AssetsIDProps, error) {
 
 // GetAssetIDStats fetches the stats of an asset with its id.
 func (a *AtomicAssets) GetAssetIDStats(id string) (*AssetsIDStatsProps, error) {
-	u, _ := urljoin.UrlJoin(a.apiUrl, ASSETS_API, id, "stats")
+	u := urljoin.UrlJoin(a.apiUrl, ASSETS_API, id, "stats")
 
 	var result = &AssetsIDStatsProps{}
 	if err := a._requester(u, result); err != nil {
@@ -118,7 +118,7 @@ func (a *AtomicAssets) GetAssetIDLogs(id string, options *GetAssetLogsQuery) (*A
 	}
 
 	v, _ := query.Values(opts)
-	u, _ := urljoin.UrlJoin(a.apiUrl, ASSETS_API, id, "logs", fmt.Sprintf("?%s", v.Encode()))
+	u := urljoin.UrlJoin(a.apiUrl, ASSETS_API, id, "logs", fmt.Sprintf("?%s", v.Encode()))
 
 	var result = &AssetsIDLogsProps{}
 	if err := a._requester(u, result); err != nil {
