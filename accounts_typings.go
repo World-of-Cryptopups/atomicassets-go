@@ -37,10 +37,10 @@ type AccountDataTemplatesProps struct {
 }
 
 type AccountCollectionProps struct {
-	Success   bool               `json:"success"`
-	Data      []AccountDataProps `json:"data,omitempty"` // if error from api, this is omitted
-	QueryTime int64              `json:"query_time"`
-	Message   string             `json:"message,omitempty"` // error message will be here
+	Success   bool                       `json:"success"`
+	Data      AccountCollectionDataProps `json:"data,omitempty"` // if error from api, this is omitted
+	QueryTime int64                      `json:"query_time"`
+	Message   string                     `json:"message,omitempty"` // error message will be here
 }
 
 type AccountCollectionDataProps struct {
